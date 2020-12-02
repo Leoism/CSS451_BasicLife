@@ -1,0 +1,10 @@
+.vscode/
+.ionide/
+[Ll]ibrary/
+[Ll]ogs/
+[Tt]emp/
+[Oo]bj/
+Assembly-CSharp.csproj
+*.sln
+.fake
+

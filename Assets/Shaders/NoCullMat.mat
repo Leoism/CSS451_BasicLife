@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material
+  m_Name: NoCullMat
   m_Shader: {fileID: 4800000, guid: 39aac0a17def71c429450e0f3e103068, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4

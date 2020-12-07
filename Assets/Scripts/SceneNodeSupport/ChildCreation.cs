@@ -36,18 +36,33 @@ public class ChildCreation : MonoBehaviour
     if (newFood == null) return;
     string foodId = RandomID(4);
     newFood.name = food + foodId;
+    // create a newSceneNode GameObject
     GameObject newSceneNodeGO = new GameObject(food);
     newSceneNodeGO.name = food + foodId;
+    SceneNode newSceneNode = newSceneNodeGO.AddComponent<SceneNode>();
+    // Create a new nodePrimitive
     NodePrimitive newFoodNP = newFood.AddComponent<NodePrimitive>();
-    sceneNodeParent.PrimitiveList.Add(newFoodNP);
+    newFoodNP.GetComponent<Renderer>().material = NPMaterial;
     // sets as child of parent node primitive not scene node. 
     newFood.transform.SetParent(parentNode);
+    newFood.transform.localScale = new Vector3(10, 10, 10);
     // set new scene node to child of old scene node
-    SceneNode newSceneNode = newSceneNodeGO.AddComponent<SceneNode>();
     newSceneNodeGO.transform.SetParent(sceneNodeParent.transform);
-    newSceneNode.PrimitiveList.Add(newFoodNP);
+    SetAllSceneNodes(newSceneNode, newFoodNP);
   }
 
+  private void SetAllSceneNodes(SceneNode newSceneNode, NodePrimitive newNodePrim)
+  {
+    NodePrimitive curr = newNodePrim;
+    while (curr != null)
+    {
+      newSceneNode.PrimitiveList.Add(curr);
+      if (curr.transform.parent != null)
+        curr = curr.transform.parent.GetComponent<NodePrimitive>();
+      else
+        curr = null;
+    }
+  }
   private string RandomID(int len)
   {
     string alphaNum = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+=-";

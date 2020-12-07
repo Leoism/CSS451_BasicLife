@@ -475,6 +475,7 @@ MonoBehaviour:
   foodNames:
   - Banana
   - Chicken
+  NPMaterial: {fileID: 2100000, guid: 944836e38beec4d46a5761f20b7292b3, type: 2}
 --- !u!1 &527979783
 GameObject:
   m_ObjectHideFlags: 0

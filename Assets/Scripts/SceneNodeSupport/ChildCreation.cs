@@ -2,9 +2,11 @@
 using System.Text;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChildCreation : MonoBehaviour
 {
+  public Dropdown childMenu = null;
   public Transform parentNode = null;
   public SceneNode sceneNodeParent = null;
   public List<GameObject> foodGOs = null;
@@ -19,6 +21,8 @@ public class ChildCreation : MonoBehaviour
     Debug.Assert(foodGOs != null);
     Debug.Assert(NPMaterial != null);
     Debug.Assert(foodNames != null);
+    Debug.Assert(childMenu != null);
+    childMenu.onValueChanged.AddListener(CreateChild);
     for (int i = 0; i < foodGOs.Count; i++)
     {
       foods.Add(foodNames[i], foodGOs[i]);
@@ -30,8 +34,9 @@ public class ChildCreation : MonoBehaviour
     parentNode = parentN;
   }
 
-  public void CreateChild(string food)
+  public void CreateChild(int val)
   {
+    string food = foodNames[val];
     GameObject newFood = Instantiate<GameObject>(foods[food]);
     if (newFood == null) return;
     string foodId = RandomID(4);

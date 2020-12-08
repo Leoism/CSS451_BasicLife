@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class ChildCreation : MonoBehaviour
 {
+  public SceneNodeControl sceneNodeControl = null;
   public Dropdown childMenu = null;
   public Transform parentNode = null;
   public SceneNode sceneNodeParent = null;
@@ -16,6 +17,7 @@ public class ChildCreation : MonoBehaviour
   // Start is called before the first frame update
   void Start()
   {
+    Debug.Assert(sceneNodeControl != null);
     Debug.Assert(parentNode != null);
     Debug.Assert(sceneNodeParent != null);
     Debug.Assert(foodGOs != null);
@@ -34,9 +36,14 @@ public class ChildCreation : MonoBehaviour
     parentNode = parentN;
   }
 
+  public void SetParentSceneNode(SceneNode parentSn)
+  {
+    sceneNodeParent = parentSn;
+  }
   public void CreateChild(int val)
   {
-    string food = foodNames[val];
+    if (val == 0) return;
+    string food = foodNames[val - 1];
     GameObject newFood = Instantiate<GameObject>(foods[food]);
     if (newFood == null) return;
     string foodId = RandomID(4);
@@ -54,6 +61,9 @@ public class ChildCreation : MonoBehaviour
     // set new scene node to child of old scene node
     newSceneNodeGO.transform.SetParent(sceneNodeParent.transform);
     SetAllSceneNodes(newSceneNode, newFoodNP);
+    childMenu.value = 0;
+    // update scene node hierarchy
+    sceneNodeControl.UpdateSceneNodeMenu();
   }
 
   private void SetAllSceneNodes(SceneNode newSceneNode, NodePrimitive newNodePrim)
@@ -68,6 +78,7 @@ public class ChildCreation : MonoBehaviour
         curr = null;
     }
   }
+
   private string RandomID(int len)
   {
     string alphaNum = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+=-";
@@ -79,10 +90,5 @@ public class ChildCreation : MonoBehaviour
       res.Append(alphaNum[randIdx]);
     }
     return res.ToString();
-  }
-  // Update is called once per frame
-  void Update()
-  {
-
   }
 }

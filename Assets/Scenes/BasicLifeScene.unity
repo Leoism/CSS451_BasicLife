@@ -536,7 +536,7 @@ GameObject:
   - component: {fileID: 379518734}
   - component: {fileID: 379518737}
   m_Layer: 5
-  m_Name: Child Menu
+  m_Name: ChildMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -618,6 +618,20 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Chicken
       m_Image: {fileID: 0}
+    - m_Text: Egg
+      m_Image: {fileID: 0}
+    - m_Text: IceCream
+      m_Image: {fileID: 0}
+    - m_Text: Muffin
+      m_Image: {fileID: 0}
+    - m_Text: Pineapple
+      m_Image: {fileID: 0}
+    - m_Text: Salad
+      m_Image: {fileID: 0}
+    - m_Text: SweetPepper
+      m_Image: {fileID: 0}
+    - m_Text: Tacos
+      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -678,9 +692,33 @@ MonoBehaviour:
   foodGOs:
   - {fileID: 1000012997751318, guid: 0550765fb22bb954ea0412b7153ff417, type: 3}
   - {fileID: 1000010917563242, guid: 6e2574af69e1ddd4497a11adb45777a1, type: 3}
+  - {fileID: 1000012343480272, guid: 9425302b7c44a194bb8782c22588bfe2, type: 3}
+  - {fileID: 1000014030850534, guid: 308c89097ca814e44b0ff03d3c0c633b, type: 3}
+  - {fileID: 1000011003416750, guid: 78dec3a2e9e50fc46882f9cc3751f692, type: 3}
+  - {fileID: 1000010466361374, guid: 80c29c7e0bd64654f8f59dda85e24897, type: 3}
+  - {fileID: 1000011262040222, guid: 196fe542ad163b149adf1ca04c19c753, type: 3}
+  - {fileID: 1000013808630610, guid: eae0d75f8edbe3349b65105f0c6b5665, type: 3}
+  - {fileID: 1000011323704582, guid: 927b358a489fa874780f1278268d7bfb, type: 3}
   foodNames:
   - Banana
   - Chicken
+  - Egg
+  - IceCream
+  - Muffin
+  - Pineapple
+  - Salad
+  - SweetPepper
+  - Tacos
+  foodTextures:
+  - {fileID: 2800000, guid: eacf31b91e5d0c6448e2f0e81172258d, type: 3}
+  - {fileID: 2800000, guid: 1d2d7d1251d253e48b10ef3607a8a53c, type: 3}
+  - {fileID: 2800000, guid: 1d2d7d1251d253e48b10ef3607a8a53c, type: 3}
+  - {fileID: 2800000, guid: 1d2d7d1251d253e48b10ef3607a8a53c, type: 3}
+  - {fileID: 2800000, guid: 1d2d7d1251d253e48b10ef3607a8a53c, type: 3}
+  - {fileID: 2800000, guid: 1d2d7d1251d253e48b10ef3607a8a53c, type: 3}
+  - {fileID: 2800000, guid: 1d2d7d1251d253e48b10ef3607a8a53c, type: 3}
+  - {fileID: 2800000, guid: 1d2d7d1251d253e48b10ef3607a8a53c, type: 3}
+  - {fileID: 2800000, guid: 1d2d7d1251d253e48b10ef3607a8a53c, type: 3}
   NPMaterial: {fileID: 2100000, guid: 944836e38beec4d46a5761f20b7292b3, type: 2}
 --- !u!1 &437189003
 GameObject:

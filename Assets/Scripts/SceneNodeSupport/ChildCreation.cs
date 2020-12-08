@@ -12,11 +12,13 @@ public class ChildCreation : MonoBehaviour
   public SceneNode sceneNodeParent = null;
   public List<GameObject> foodGOs = null;
   public List<string> foodNames = null;
+  public List<Texture> foodTextures = null;
   public Material NPMaterial = null;
   private Dictionary<string, GameObject> foods = new Dictionary<string, GameObject>();
   // Start is called before the first frame update
   void Start()
   {
+    Debug.Assert(foodTextures != null);
     Debug.Assert(sceneNodeControl != null);
     Debug.Assert(parentNode != null);
     Debug.Assert(sceneNodeParent != null);
@@ -52,10 +54,11 @@ public class ChildCreation : MonoBehaviour
     GameObject newSceneNodeGO = new GameObject(food);
     newSceneNodeGO.name = food + foodId;
     SceneNode newSceneNode = newSceneNodeGO.AddComponent<SceneNode>();
-        newSceneNode.gameObject.tag = "SceneNode";
+    newSceneNode.gameObject.tag = "SceneNode";
     // Create a new nodePrimitive
     NodePrimitive newFoodNP = newFood.AddComponent<NodePrimitive>();
     newFoodNP.GetComponent<Renderer>().material = NPMaterial;
+    newFoodNP.GetComponent<Renderer>().material.mainTexture = foodTextures[val - 1];
     // sets as child of parent node primitive not scene node. 
     //newFood.transform.SetParent(parentNode);
     newFood.transform.localScale = new Vector3(10, 10, 10);

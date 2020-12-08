@@ -51,7 +51,7 @@ public class SceneNodeControl : MonoBehaviour
     XformControl.SetSelectedObject(mSelectedTransform[index]);
     childCreator.SetParentSceneNode(mSelectedTransform[index].gameObject.GetComponent<SceneNode>());
     NodePrimitive nodePrimEq = FindEquivalentNodePrim(mSelectedTransform[index].name, RootNodePrim.transform);
-    childCreator.SetParentNode(nodePrimEq.transform);
+    //childCreator.SetParentNode(nodePrimEq.transform);
   }
 
   private NodePrimitive FindEquivalentNodePrim(string name, Transform rootNP)

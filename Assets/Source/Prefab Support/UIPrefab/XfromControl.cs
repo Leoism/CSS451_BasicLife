@@ -10,6 +10,7 @@ public class XfromControl : MonoBehaviour
   public Text ObjectName;
 
   private Transform mSelected;
+    public Transform AxisFrame;
   private Vector3 mPreviousSliderValues = Vector3.zero;
 
   // Use this for initialization
@@ -34,9 +35,9 @@ public class XfromControl : MonoBehaviour
   {
     Vector3 p = ReadObjectXfrom();
     mPreviousSliderValues = p;
-    X.InitSliderRange(-20, 20, p.x);
-    Y.InitSliderRange(-20, 20, p.y);
-    Z.InitSliderRange(-20, 20, p.z);
+    X.InitSliderRange(-10, 10, p.x);
+    Y.InitSliderRange(-10, 10, p.y);
+    Z.InitSliderRange(-10, 10, p.z);
   }
 
   void SetToScaling(bool v)
@@ -102,13 +103,15 @@ public class XfromControl : MonoBehaviour
     {
       if (mSelected != null)
       {
-        // mSelected.gameObject.GetComponent<SceneNode>().AxisFrame.gameObject.SetActive(false);
+                //SceneNode sn = mSelected.gameObject.GetComponent<SceneNode>();
+                //if (sn != null) sn.AxisFrame = null;
       }
       mSelected = xform;
 
       mPreviousSliderValues = Vector3.zero;
       ObjectName.text = "Selected:" + xform.name;
-    }
+            if (AxisFrame != null) AxisFrame.position = mSelected.position;
+        }
 
     else
       ObjectName.text = "Selected: none";

@@ -52,11 +52,12 @@ public class ChildCreation : MonoBehaviour
     GameObject newSceneNodeGO = new GameObject(food);
     newSceneNodeGO.name = food + foodId;
     SceneNode newSceneNode = newSceneNodeGO.AddComponent<SceneNode>();
+        newSceneNode.gameObject.tag = "SceneNode";
     // Create a new nodePrimitive
     NodePrimitive newFoodNP = newFood.AddComponent<NodePrimitive>();
     newFoodNP.GetComponent<Renderer>().material = NPMaterial;
     // sets as child of parent node primitive not scene node. 
-    newFood.transform.SetParent(parentNode);
+    //newFood.transform.SetParent(parentNode);
     newFood.transform.localScale = new Vector3(10, 10, 10);
     // set new scene node to child of old scene node
     newSceneNodeGO.transform.SetParent(sceneNodeParent.transform);

@@ -5,7 +5,13 @@ using UnityEngine;
 public class MoveObject : MonoBehaviour
 {
   public bool isSelected = false;
+  private float speed = 5f;
+  public Transform PairCamera = null;
 
+  void Start()
+  {
+    Debug.Assert(PairCamera != null);
+  }
   // Update is called once per frame
   void Update()
   {
@@ -17,19 +23,27 @@ public class MoveObject : MonoBehaviour
   {
     if (Input.GetKey(KeyCode.A))
     {
-      transform.localPosition += -transform.right.normalized * Time.deltaTime;
+      Vector3 newPos = -transform.right.normalized * Time.deltaTime * speed;
+      transform.localPosition += newPos;
+      PairCamera.localPosition += newPos;
     }
     if (Input.GetKey(KeyCode.W))
     {
-      transform.localPosition += transform.forward.normalized * Time.deltaTime;
+      Vector3 newPos = transform.forward.normalized * Time.deltaTime * speed;
+      transform.localPosition += newPos;
+      PairCamera.localPosition += newPos;
     }
     if (Input.GetKey(KeyCode.S))
     {
-      transform.localPosition += -transform.forward.normalized * Time.deltaTime;
+      Vector3 newPos = -transform.forward.normalized * Time.deltaTime * speed;
+      transform.localPosition += newPos;
+      PairCamera.localPosition += newPos;
     }
     if (Input.GetKey(KeyCode.D))
     {
-      transform.localPosition += transform.right.normalized * Time.deltaTime;
+      Vector3 newPos = transform.right.normalized * Time.deltaTime * speed;
+      transform.localPosition += newPos;
+      PairCamera.localPosition += newPos;
     }
   }
 }

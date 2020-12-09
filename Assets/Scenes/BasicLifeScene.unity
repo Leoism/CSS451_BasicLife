@@ -313,12 +313,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 193555233}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 5, z: 12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 271499375}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &193555235
 AudioListener:
@@ -658,38 +658,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e72f9ebbdfe9c634eaa952ad7dbb69db, type: 3}
---- !u!1 &271499374
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 271499375}
-  m_Layer: 0
-  m_Name: Cameras
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &271499375
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 271499374}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 645, y: 384, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 862077455}
-  - {fileID: 193555234}
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &375637720
 GameObject:
   m_ObjectHideFlags: 0
@@ -938,6 +906,7 @@ GameObject:
   - component: {fileID: 437189004}
   - component: {fileID: 437189008}
   - component: {fileID: 437189009}
+  - component: {fileID: 437189010}
   m_Layer: 0
   m_Name: Pet
   m_TagString: Untagged
@@ -1047,6 +1016,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsPet: 1
   minSize: {x: 2, y: 2, z: 2}
+--- !u!114 &437189010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437189003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bb5f527a1cb80940b1c7d4e5e712510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  PairCamera: {fileID: 862077455}
 --- !u!1 &441882521
 GameObject:
   m_ObjectHideFlags: 0
@@ -1980,11 +1963,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 862077454}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -12, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 271499375}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &862077456
 AudioListener:
@@ -2364,6 +2347,7 @@ GameObject:
   - component: {fileID: 1293868477}
   - component: {fileID: 1293868476}
   - component: {fileID: 1293868475}
+  - component: {fileID: 1293868478}
   m_Layer: 5
   m_Name: CameraMenu
   m_TagString: Untagged
@@ -2443,13 +2427,24 @@ MonoBehaviour:
     m_Options:
     - m_Text: Main World
       m_Image: {fileID: 0}
-    - m_Text: Human
-      m_Image: {fileID: 0}
     - m_Text: Pet
+      m_Image: {fileID: 0}
+    - m_Text: Human
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: bd3b6f8f0e8a6d54982d54b70395a1c8, type: 3}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1293868476
 MonoBehaviour:
@@ -2488,6 +2483,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1293868473}
   m_CullTransparentMesh: 0
+--- !u!114 &1293868478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293868473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd3b6f8f0e8a6d54982d54b70395a1c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LookPoint: {fileID: 0}
+  cameraMenu: {fileID: 1293868475}
+  cameras:
+  - {fileID: 963194227}
+  - {fileID: 862077457}
+  - {fileID: 193555236}
+  lookAts:
+  - {fileID: 1061486634}
+  - {fileID: 437189007}
+  - {fileID: 1646135661}
 --- !u!1 &1463911446
 GameObject:
   m_ObjectHideFlags: 0
@@ -2843,6 +2860,7 @@ GameObject:
   - component: {fileID: 1646135658}
   - component: {fileID: 1646135662}
   - component: {fileID: 1646135663}
+  - component: {fileID: 1646135664}
   m_Layer: 0
   m_Name: Hooman
   m_TagString: Untagged
@@ -2953,6 +2971,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MyColor: {r: 0.1, g: 0.1, b: 0.2, a: 1}
   Pivot: {x: 0, y: 0, z: 0}
+--- !u!114 &1646135664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646135657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bb5f527a1cb80940b1c7d4e5e712510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  PairCamera: {fileID: 193555234}
 --- !u!1 &1646194395
 GameObject:
   m_ObjectHideFlags: 0

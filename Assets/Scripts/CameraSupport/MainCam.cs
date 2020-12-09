@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class MainCam : MonoBehaviour
@@ -22,6 +23,7 @@ public class MainCam : MonoBehaviour
 
   Vector3 mouseDown = Vector3.zero;
 
+  public Dropdown cameraMenu = null;
   void Awake()
   {
     TheCamera = transform.gameObject.GetComponent<Camera>();
@@ -30,7 +32,9 @@ public class MainCam : MonoBehaviour
   // Start is called before the first frame update
   void Start()
   {
+    Debug.Assert(cameraMenu != null);
     Debug.Assert(LookPoint != null);
+    cameraMenu.onValueChanged.AddListener(OnCameraMenuChange);
   }
 
   // Update is called once per frame
@@ -38,6 +42,11 @@ public class MainCam : MonoBehaviour
   {
     ProcessMouseEvents();
     SetCameraRotation();
+  }
+
+  void OnCameraMenuChange(int val)
+  {
+
   }
 
   #region MOVE_CAMERA

@@ -500,6 +500,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneNodeControl
       objectReference: {fileID: 0}
+    - target: {fileID: 114106389129077176, guid: e72f9ebbdfe9c634eaa952ad7dbb69db,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 114269901316992498, guid: e72f9ebbdfe9c634eaa952ad7dbb69db,
         type: 3}
       propertyPath: TheRoot
@@ -520,6 +525,16 @@ PrefabInstance:
       propertyPath: AxisFrame
       value: 
       objectReference: {fileID: 1061486634}
+    - target: {fileID: 114864460606940664, guid: e72f9ebbdfe9c634eaa952ad7dbb69db,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114994766388520740, guid: e72f9ebbdfe9c634eaa952ad7dbb69db,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 224099264992893166, guid: e72f9ebbdfe9c634eaa952ad7dbb69db,
         type: 3}
       propertyPath: m_AnchorMin.x

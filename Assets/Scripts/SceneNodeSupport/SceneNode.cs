@@ -33,19 +33,21 @@ public class SceneNode : MonoBehaviour
     isLeaf = childrenCount == 0;
     if (!isLeaf || isRoot) return;
     float petDist = (PetLocation.localPosition - transform.position).magnitude;
+    petDist -= PetLocation.localScale.x / 2;
     float humanDist = (HumanLocation.localPosition - transform.position).magnitude;
     if (Mathf.Abs(petDist) < 1.75f || Mathf.Abs(humanDist) < 1.75f)
     {
       NodePrimitive nodePrim = sceneNodeControl.FindEquivalentNodePrim(transform.name, rootNP.transform);
-      PetScript theThing = Mathf.Abs(petDist) < 1.75f ? PetLocation.gameObject.GetComponent<KindGetter>().kindObj :
-        HumanLocation.gameObject.GetComponent<KindGetter>().kindObj;
-      Debug.Log(theThing);
+      PetScript theThing = Mathf.Abs(petDist) < 1.75f ? PetLocation.gameObject.GetComponent<PetScript>() :
+        HumanLocation.gameObject.GetComponent<PetScript>();
+      nodePrim.gameObject.SetActive(false);
+      gameObject.SetActive(false);
       Destroy(nodePrim.gameObject);
       Destroy(nodePrim);
       Destroy(gameObject);
       Destroy(this);
       theThing.Grow();
-      sceneNodeControl.UpdateSceneNodeMenu();
+      sceneNodeControl.runUpdate = true;
     }
   }
 

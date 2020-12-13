@@ -951,8 +951,8 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 1d2d7d1251d253e48b10ef3607a8a53c, type: 3}
   - {fileID: 2800000, guid: 1d2d7d1251d253e48b10ef3607a8a53c, type: 3}
   NPMaterial: {fileID: 2100000, guid: 944836e38beec4d46a5761f20b7292b3, type: 2}
-  PetLocation: {fileID: 133528626}
-  HumanLocation: {fileID: 1445754252}
+  PetLocation: {fileID: 437189007}
+  HumanLocation: {fileID: 1646135661}
   rootNP: {fileID: 1163450765}
 --- !u!1 &437189003
 GameObject:
@@ -2241,8 +2241,8 @@ MonoBehaviour:
   isLeaf: 0
   isRoot: 1
   rootNP: {fileID: 1163450765}
-  PetLocation: {fileID: 133528626}
-  HumanLocation: {fileID: 1445754252}
+  PetLocation: {fileID: 437189007}
+  HumanLocation: {fileID: 1646135661}
   sceneNodeControl: {fileID: 522367198}
 --- !u!1 &1154004554
 GameObject:

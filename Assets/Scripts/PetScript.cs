@@ -28,7 +28,6 @@ public class PetScript : MonoBehaviour
   {
     Matrix4x4 i = Matrix4x4.identity;
     if (Myself != null) Myself.LoadShaderMatrix(ref i);
-
     GrowthDecay();
     SetPos();
   }
@@ -49,9 +48,11 @@ public class PetScript : MonoBehaviour
 
   void GrowthDecay()
   {
-    if (IsPet)
-    {
-      //Reduce scale
-    }
+    if (!IsPet) return;
+    if (Time.frameCount % 300 != 0) return;
+    Vector3 newSize = transform.localScale * .99f;
+    if (newSize.x < minSize.x) return;
+    transform.localScale = newSize;
+
   }
 }

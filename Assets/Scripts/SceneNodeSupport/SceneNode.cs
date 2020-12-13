@@ -37,10 +37,14 @@ public class SceneNode : MonoBehaviour
     if (Mathf.Abs(petDist) < 1.75f || Mathf.Abs(humanDist) < 1.75f)
     {
       NodePrimitive nodePrim = sceneNodeControl.FindEquivalentNodePrim(transform.name, rootNP.transform);
+      PetScript theThing = Mathf.Abs(petDist) < 1.75f ? PetLocation.gameObject.GetComponent<KindGetter>().kindObj :
+        HumanLocation.gameObject.GetComponent<KindGetter>().kindObj;
+      Debug.Log(theThing);
       Destroy(nodePrim.gameObject);
       Destroy(nodePrim);
       Destroy(gameObject);
       Destroy(this);
+      theThing.Grow();
       sceneNodeControl.UpdateSceneNodeMenu();
     }
   }

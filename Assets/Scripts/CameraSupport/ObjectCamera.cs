@@ -120,11 +120,10 @@ public class ObjectCamera : MonoBehaviour
     Vector3 V = LookPoint.localPosition - TheCamera.transform.localPosition;
     TheCamera.transform.up = Vector3.up;
     TheCamera.transform.forward = V;
-    LookPoint.rotation = new Quaternion(
-        LookPoint.rotation.x,
-        TheCamera.transform.rotation.y,
-        LookPoint.rotation.z,
-        LookPoint.rotation.w
+    LookPoint.localEulerAngles = new Vector3(
+        LookPoint.localEulerAngles.x,
+        TheCamera.transform.localEulerAngles.y,
+        LookPoint.localEulerAngles.z
     );
   }
 

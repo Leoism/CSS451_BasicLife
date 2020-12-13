@@ -297,6 +297,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 133528626}
+  - component: {fileID: 133528627}
   m_Layer: 0
   m_Name: PetTransform
   m_TagString: Untagged
@@ -318,6 +319,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &133528627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133528625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5296d0bfc1e4574189aef8f43853eb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kindObj: {fileID: 437189009}
 --- !u!1 &193555233
 GameObject:
   m_ObjectHideFlags: 0
@@ -2554,6 +2568,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1445754252}
+  - component: {fileID: 1445754253}
   m_Layer: 0
   m_Name: HumanTransform
   m_TagString: Untagged
@@ -2575,6 +2590,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1445754253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445754251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5296d0bfc1e4574189aef8f43853eb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kindObj: {fileID: 1646135662}
 --- !u!1 &1463911446
 GameObject:
   m_ObjectHideFlags: 0

@@ -51,10 +51,10 @@ public class SceneNodeControl : MonoBehaviour
     XformControl.SetSelectedObject(mSelectedTransform[index]);
     childCreator.SetParentSceneNode(mSelectedTransform[index].gameObject.GetComponent<SceneNode>());
     NodePrimitive nodePrimEq = FindEquivalentNodePrim(mSelectedTransform[index].name, RootNodePrim.transform);
-    //childCreator.SetParentNode(nodePrimEq.transform);
+    childCreator.SetParentNode(nodePrimEq.transform);
   }
 
-  private NodePrimitive FindEquivalentNodePrim(string name, Transform rootNP)
+  public NodePrimitive FindEquivalentNodePrim(string name, Transform rootNP)
   {
     if (rootNP.transform.name.Equals(name)) return rootNP.GetComponent<NodePrimitive>();
     for (int i = 0; i < rootNP.childCount; i++)

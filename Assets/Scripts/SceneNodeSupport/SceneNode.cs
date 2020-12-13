@@ -13,6 +13,13 @@ public class SceneNode : MonoBehaviour
   public Transform SmallCamera = null;
   public Vector3 kDefaultTreeTip = new Vector3(0.19f, 12.69f, 3.88f);
   public Vector3 CamPosTip = Vector3.zero;
+  public bool isLeaf = false;
+  public bool isRoot = false;
+  public NodePrimitive rootNP = null;
+  public Transform PetLocation = null;
+  public Transform HumanLocation = null;
+  public SceneNodeControl sceneNodeControl = null;
+  private int childrenCount = 0;
   // Use this for initialization
   protected void Start()
   {
@@ -22,6 +29,20 @@ public class SceneNode : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
+    childrenCount = transform.childCount;
+    isLeaf = childrenCount == 0;
+    if (!isLeaf || isRoot) return;
+    float petDist = (PetLocation.localPosition - transform.position).magnitude;
+    float humanDist = (HumanLocation.localPosition - transform.position).magnitude;
+    if (Mathf.Abs(petDist) < 1.75f || Mathf.Abs(humanDist) < 1.75f)
+    {
+      NodePrimitive nodePrim = sceneNodeControl.FindEquivalentNodePrim(transform.name, rootNP.transform);
+      Destroy(nodePrim.gameObject);
+      Destroy(nodePrim);
+      Destroy(gameObject);
+      Destroy(this);
+      sceneNodeControl.UpdateSceneNodeMenu();
+    }
   }
 
   private void InitializeSceneNode()

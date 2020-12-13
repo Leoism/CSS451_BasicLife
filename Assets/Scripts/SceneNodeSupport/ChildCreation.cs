@@ -14,10 +14,16 @@ public class ChildCreation : MonoBehaviour
   public List<string> foodNames = null;
   public List<Texture> foodTextures = null;
   public Material NPMaterial = null;
+  public Transform PetLocation = null;
+  public Transform HumanLocation = null;
+  public NodePrimitive rootNP = null;
   private Dictionary<string, GameObject> foods = new Dictionary<string, GameObject>();
   // Start is called before the first frame update
   void Start()
   {
+    Debug.Assert(rootNP);
+    Debug.Assert(PetLocation != null);
+    Debug.Assert(HumanLocation != null);
     Debug.Assert(foodTextures != null);
     Debug.Assert(sceneNodeControl != null);
     Debug.Assert(parentNode != null);
@@ -60,7 +66,8 @@ public class ChildCreation : MonoBehaviour
     newFoodNP.GetComponent<Renderer>().material = NPMaterial;
     newFoodNP.GetComponent<Renderer>().material.mainTexture = foodTextures[val - 1];
     // sets as child of parent node primitive not scene node. 
-    //newFood.transform.SetParent(parentNode);
+    newFood.transform.SetParent(parentNode);
+    newFood.transform.localPosition = new Vector3(0, 0.5f, 0);
     newFood.transform.localScale = new Vector3(10, 10, 10);
     // set new scene node to child of old scene node
     newSceneNodeGO.transform.SetParent(sceneNodeParent.transform);
@@ -68,6 +75,11 @@ public class ChildCreation : MonoBehaviour
     childMenu.value = 0;
     // update scene node hierarchy
     sceneNodeControl.UpdateSceneNodeMenu();
+    // set pet and human location
+    newSceneNode.PetLocation = PetLocation;
+    newSceneNode.HumanLocation = HumanLocation;
+    newSceneNode.sceneNodeControl = sceneNodeControl;
+    newSceneNode.rootNP = rootNP;
   }
 
   private void SetAllSceneNodes(SceneNode newSceneNode, NodePrimitive newNodePrim)

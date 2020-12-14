@@ -1894,6 +1894,7 @@ GameObject:
   m_Component:
   - component: {fileID: 796781404}
   - component: {fileID: 796781405}
+  - component: {fileID: 796781406}
   m_Layer: 0
   m_Name: MainWorld
   m_TagString: Untagged
@@ -1928,6 +1929,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 1100120355}
+--- !u!114 &796781406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796781403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1144031ffb1df6844b0107366e53f58a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightSource: {fileID: 705507994}
+  moon: {fileID: 0}
+  isDecrease: 1
 --- !u!1 &815522580
 GameObject:
   m_ObjectHideFlags: 0

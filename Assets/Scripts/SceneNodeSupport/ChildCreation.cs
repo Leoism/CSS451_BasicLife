@@ -66,7 +66,7 @@ public class ChildCreation : MonoBehaviour
     newFoodNP.GetComponent<Renderer>().material = NPMaterial;
     newFoodNP.GetComponent<Renderer>().material.mainTexture = foodTextures[val - 1];
     // sets as child of parent node primitive not scene node. 
-    newFood.transform.SetParent(parentNode);
+    //newFood.transform.SetParent(parentNode);
     newFood.transform.localScale = new Vector3(10, 10, 10);
     // set new scene node to child of old scene node
     newSceneNodeGO.transform.SetParent(sceneNodeParent.transform);

@@ -17,10 +17,12 @@ public class ObjectCamera : MonoBehaviour
   public Dropdown cameraMenu = null;
   public List<Camera> cameras = null;
   public List<Transform> lookAts = null;
+    public Transform AxisFrame = null;
   void Awake()
   {
     TheCamera = transform.gameObject.GetComponent<Camera>();
     Debug.Assert(cameras != null);
+        Debug.Assert(AxisFrame != null);
     TheCamera = cameras[0];
   }
   // Start is called before the first frame update
@@ -37,6 +39,7 @@ public class ObjectCamera : MonoBehaviour
   {
     ProcessMouseEvents();
     SetCameraRotation();
+        SetAxisFrame();
   }
 
   void OnCameraMenuChange(int val)
@@ -126,6 +129,12 @@ public class ObjectCamera : MonoBehaviour
         LookPoint.localEulerAngles.z
     );
   }
+
+    void SetAxisFrame()
+    {
+        AxisFrame.localPosition = LookPoint.localPosition;
+        AxisFrame.localRotation = Quaternion.identity;
+    }
 
   #endregion
 }

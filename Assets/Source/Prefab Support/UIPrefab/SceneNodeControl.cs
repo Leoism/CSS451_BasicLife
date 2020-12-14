@@ -14,7 +14,7 @@ public class SceneNodeControl : MonoBehaviour
   const string kChildSpace = "  ";
   public List<Dropdown.OptionData> mSelectMenuOptions = new List<Dropdown.OptionData>();
   List<Transform> mSelectedTransform = new List<Transform>();
-
+  public bool runUpdate = false;
   // Use this for initialization
   void Start()
   {
@@ -28,6 +28,15 @@ public class SceneNodeControl : MonoBehaviour
     TheMenu.onValueChanged.AddListener(SelectionChange);
 
     XformControl.SetSelectedObject(TheRoot.transform);
+  }
+
+  void Update()
+  {
+    if (runUpdate)
+    {
+      UpdateSceneNodeMenu();
+      runUpdate = false;
+    }
   }
 
   public void GetChildrenNames(string blanks, Transform node)
@@ -51,10 +60,10 @@ public class SceneNodeControl : MonoBehaviour
     XformControl.SetSelectedObject(mSelectedTransform[index]);
     childCreator.SetParentSceneNode(mSelectedTransform[index].gameObject.GetComponent<SceneNode>());
     NodePrimitive nodePrimEq = FindEquivalentNodePrim(mSelectedTransform[index].name, RootNodePrim.transform);
-    //childCreator.SetParentNode(nodePrimEq.transform);
+    childCreator.SetParentNode(nodePrimEq.transform);
   }
 
-  private NodePrimitive FindEquivalentNodePrim(string name, Transform rootNP)
+  public NodePrimitive FindEquivalentNodePrim(string name, Transform rootNP)
   {
     if (rootNP.transform.name.Equals(name)) return rootNP.GetComponent<NodePrimitive>();
     for (int i = 0; i < rootNP.childCount; i++)

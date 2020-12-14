@@ -18,20 +18,23 @@ public class PetScript : MonoBehaviour
   {
     if (IsPet) transform.localScale = minSize;
 
-    Matrix4x4 i = Matrix4x4.identity;
-    if (Myself != null) Myself.LoadShaderMatrix(ref i);
+        RenderSelf();
     SetPos();
   }
 
   // Update is called once per frame
   void Update()
   {
-    Matrix4x4 i = Matrix4x4.identity;
-    if (Myself != null) Myself.LoadShaderMatrix(ref i);
+        RenderSelf();
     GrowthDecay();
     SetPos();
   }
 
+    void RenderSelf()
+    {
+        Matrix4x4 i = Matrix4x4.identity;
+        if (Myself != null) Myself.LoadShaderMatrix(ref i);
+    }
   void SetPos()
   {
     Vector3 pos = new Vector3(transform.position.x, 0f, transform.position.z);

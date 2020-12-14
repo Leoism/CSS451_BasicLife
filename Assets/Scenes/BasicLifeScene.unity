@@ -343,6 +343,7 @@ GameObject:
   - component: {fileID: 193555234}
   - component: {fileID: 193555236}
   - component: {fileID: 193555235}
+  - component: {fileID: 193555237}
   m_Layer: 0
   m_Name: HumanCamera
   m_TagString: Untagged
@@ -415,6 +416,19 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &193555237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193555233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ec159cc02c8e3346a0edbc39b11b40d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ALight: {fileID: 705507996}
 --- !u!1 &198679439
 GameObject:
   m_ObjectHideFlags: 0
@@ -1687,6 +1701,7 @@ GameObject:
   m_Component:
   - component: {fileID: 705507995}
   - component: {fileID: 705507994}
+  - component: {fileID: 705507996}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1769,6 +1784,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &705507996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705507993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4f4b097f46a693418b8dcb70eeaa9b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Near: 5
+  Far: 10
+  LightColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &710761972
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2011,6 +2041,7 @@ GameObject:
   - component: {fileID: 862077455}
   - component: {fileID: 862077457}
   - component: {fileID: 862077456}
+  - component: {fileID: 862077458}
   m_Layer: 0
   m_Name: PetCamera
   m_TagString: Untagged
@@ -2083,6 +2114,19 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &862077458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862077454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ec159cc02c8e3346a0edbc39b11b40d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ALight: {fileID: 705507996}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2095,6 +2139,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2181,6 +2226,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LookPoint: {fileID: 1061486634}
   cameraMenu: {fileID: 1293868475}
+--- !u!114 &963194230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ec159cc02c8e3346a0edbc39b11b40d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ALight: {fileID: 705507996}
 --- !u!4 &1061486634 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4363998164989696975, guid: 5d786c54823aec74cb9eed4df294c0bc,
@@ -2574,6 +2632,7 @@ MonoBehaviour:
   - {fileID: 1061486634}
   - {fileID: 437189007}
   - {fileID: 1646135661}
+  AxisFrame: {fileID: 1061486634}
 --- !u!1 &1445754251
 GameObject:
   m_ObjectHideFlags: 0
@@ -3082,7 +3141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c32c3a0b52c0b684ea2ea1a9529835eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyColor: {r: 0.1, g: 0.1, b: 0.2, a: 1}
+  MyColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
   Pivot: {x: 0, y: 0, z: 0}
 --- !u!114 &1646135664
 MonoBehaviour:

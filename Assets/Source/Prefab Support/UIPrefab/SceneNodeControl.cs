@@ -15,9 +15,11 @@ public class SceneNodeControl : MonoBehaviour
   public List<Dropdown.OptionData> mSelectMenuOptions = new List<Dropdown.OptionData>();
   List<Transform> mSelectedTransform = new List<Transform>();
   public bool runUpdate = false;
+  public SmallViewCamera smallViewCamera = null;
   // Use this for initialization
   void Start()
   {
+    Debug.Assert(smallViewCamera != null);
     Debug.Assert(RootNodePrim != null);
     Debug.Assert(TheMenu != null);
     Debug.Assert(TheRoot != null);
@@ -55,11 +57,12 @@ public class SceneNodeControl : MonoBehaviour
     }
   }
 
-  void SelectionChange(int index)
+  public void SelectionChange(int index)
   {
     XformControl.SetSelectedObject(mSelectedTransform[index]);
     childCreator.SetParentSceneNode(mSelectedTransform[index].gameObject.GetComponent<SceneNode>());
     NodePrimitive nodePrimEq = FindEquivalentNodePrim(mSelectedTransform[index].name, RootNodePrim.transform);
+    smallViewCamera.selectedNode = mSelectedTransform[index];
     //childCreator.SetParentNode(nodePrimEq.transform);
   }
 

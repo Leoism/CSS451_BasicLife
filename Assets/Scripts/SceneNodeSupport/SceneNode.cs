@@ -31,7 +31,7 @@ public class SceneNode : MonoBehaviour
   {
     childrenCount = transform.childCount;
     isLeaf = childrenCount == 0;
-        if (transform.parent == null) isRoot = true;
+    isRoot = transform.parent == null;
     if (!isLeaf || isRoot) return;
     float petDist = (PetLocation.localPosition - transform.position).magnitude;
     petDist -= PetLocation.localScale.x / 2;
@@ -40,13 +40,15 @@ public class SceneNode : MonoBehaviour
     {
       PetScript theThing = Mathf.Abs(petDist) < 1.75f ? PetLocation.gameObject.GetComponent<PetScript>() :
         HumanLocation.gameObject.GetComponent<PetScript>();
-            foreach(NodePrimitive np in PrimitiveList)
-            {
-                Destroy(np.gameObject);
-            }
+      foreach (NodePrimitive np in PrimitiveList)
+      {
+        Destroy(np.gameObject);
+      }
       theThing.Grow();
       sceneNodeControl.runUpdate = true;
-            Destroy(gameObject);
+      // Go back to looking at banana
+      sceneNodeControl.SelectionChange(0);
+      Destroy(gameObject);
     }
   }
 

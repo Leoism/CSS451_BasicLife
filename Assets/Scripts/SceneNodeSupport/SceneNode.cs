@@ -23,12 +23,14 @@ public class SceneNode : MonoBehaviour
   // Use this for initialization
   protected void Start()
   {
+    Debug.Assert(SceneCollider != null);
     InitializeSceneNode();
   }
 
   // Update is called once per frame
   void Update()
   {
+    SceneCollider.transform.position = transform.position;
     childrenCount = transform.childCount;
     isLeaf = childrenCount == 0;
     isRoot = transform.parent == null;
@@ -48,6 +50,7 @@ public class SceneNode : MonoBehaviour
       sceneNodeControl.runUpdate = true;
       // Go back to looking at banana
       sceneNodeControl.SelectionChange(0);
+      Destroy(SceneCollider.gameObject);
       Destroy(gameObject);
     }
   }

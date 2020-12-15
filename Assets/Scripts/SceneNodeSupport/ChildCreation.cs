@@ -17,10 +17,12 @@ public class ChildCreation : MonoBehaviour
   public Transform PetLocation = null;
   public Transform HumanLocation = null;
   public NodePrimitive rootNP = null;
+  public GameObject sceneColliderPrefab = null;
   private Dictionary<string, GameObject> foods = new Dictionary<string, GameObject>();
   // Start is called before the first frame update
   void Start()
   {
+    Debug.Assert(sceneColliderPrefab != null);
     Debug.Assert(rootNP);
     Debug.Assert(PetLocation != null);
     Debug.Assert(HumanLocation != null);
@@ -80,6 +82,10 @@ public class ChildCreation : MonoBehaviour
     newSceneNode.HumanLocation = HumanLocation;
     newSceneNode.sceneNodeControl = sceneNodeControl;
     newSceneNode.rootNP = rootNP;
+    // attach scene node to collider
+    newSceneNode.SceneCollider = Instantiate<GameObject>(sceneColliderPrefab).transform;
+    newSceneNode.SceneCollider.gameObject.AddComponent<KindGetter>();
+    newSceneNode.SceneCollider.gameObject.GetComponent<KindGetter>().nodeType = newSceneNode;
   }
 
   private void SetAllSceneNodes(SceneNode newSceneNode, NodePrimitive newNodePrim)

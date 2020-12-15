@@ -25,7 +25,7 @@ public class Main : MonoBehaviour
     else if (lightSource.color.r > 0.98f)
       isDecrease = true;
     if (Time.frameCount % 300 == 0)
-      lightSource.color *= isDecrease ? 0.99f : 1.2f;
+      lightSource.color *= isDecrease ? 0.95f : 1.05f;
 
   }
 }

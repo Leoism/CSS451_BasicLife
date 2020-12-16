@@ -97,6 +97,7 @@ public class Main : MonoBehaviour
         if (-0.2f < Camera.main.transform.right.x && Camera.main.transform.right.x < 0.4)
         {
           track.z = Camera.main.transform.right.z < 0 ? track.x * -1 : track.x;
+          track.z *= Camera.main.transform.right.x > 0 ? 1 : -1;
           track.x = 0;
         }
         Debug.Log(Camera.main.transform.right);

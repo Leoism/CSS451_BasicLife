@@ -8,7 +8,6 @@ public class SceneNodeControl : MonoBehaviour
   public Dropdown TheMenu = null;
   public SceneNode TheRoot = null;
   public NodePrimitive RootNodePrim = null;
-  public XfromControl XformControl = null;
   public ChildCreation childCreator = null;
 
   const string kChildSpace = "  ";
@@ -23,13 +22,11 @@ public class SceneNodeControl : MonoBehaviour
     Debug.Assert(RootNodePrim != null);
     Debug.Assert(TheMenu != null);
     Debug.Assert(TheRoot != null);
-    Debug.Assert(XformControl != null);
     Debug.Assert(childCreator != null);
 
     UpdateSceneNodeMenu();
     TheMenu.onValueChanged.AddListener(SelectionChange);
 
-    XformControl.SetSelectedObject(TheRoot.transform);
   }
 
   void Update()
@@ -59,7 +56,6 @@ public class SceneNodeControl : MonoBehaviour
 
   public void SelectionChange(int index)
   {
-    XformControl.SetSelectedObject(mSelectedTransform[index]);
     childCreator.SetParentSceneNode(mSelectedTransform[index].gameObject.GetComponent<SceneNode>());
     NodePrimitive nodePrimEq = FindEquivalentNodePrim(mSelectedTransform[index].name, RootNodePrim.transform);
     smallViewCamera.selectedNode = mSelectedTransform[index];

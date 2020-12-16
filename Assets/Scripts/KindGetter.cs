@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class KindGetter : MonoBehaviour
 {
-  public PetScript kindObj = null;
+  public SceneNode nodeType = null;
   void Start()
   {
-    Debug.Assert(kindObj != null);
+    Debug.Assert(nodeType != null);
   }
 }

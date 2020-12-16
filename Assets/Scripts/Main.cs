@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -45,8 +46,8 @@ public class Main : MonoBehaviour
     /*if (!Input.GetMouseButton(0) && !Input.GetMouseButton(1)) return;
         if (EventSystem.current.IsPointerOverGameObject(fingerID)) return;
         RaycastHit hit;
-    if (Camera.main == null) return;
-    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    if (selectedCam == null) return;
+    Ray ray = selectedCam.ScreenPointToRay(Input.mousePosition);
     if (Physics.Raycast(ray, out hit))
     {
       KindGetter kindGetter = hit.transform.gameObject.GetComponent<KindGetter>();
@@ -54,12 +55,11 @@ public class Main : MonoBehaviour
       SceneNode attachedSceneNode = kindGetter.nodeType;
       if (attachedSceneNode == null) return;
       Vector3 offset = hit.point - attachedSceneNode.transform.position;
-      Debug.Log(hit.point);
       Vector3 direction =
       (Input.mousePosition.x - prevPos.x > 0 ?
-        Camera.main.transform.right : -Camera.main.transform.right) +
+        selectedCam.transform.right : -selectedCam.transform.right) +
         (Input.mousePosition.y - prevPos.y > 0 ?
-        Camera.main.transform.up : -Camera.main.transform.up);
+        selectedCam.transform.up : -selectedCam.transform.up);
       direction.Normalize();
             if(Input.GetMouseButton(0)) attachedSceneNode.transform.Translate(offset * 5f * Time.deltaTime);
             if(Input.GetMouseButton(1)) attachedSceneNode.transform.Translate(-offset * 5f * Time.deltaTime);
@@ -68,12 +68,18 @@ public class Main : MonoBehaviour
 
     if (!Input.GetKey(KeyCode.LeftAlt))
     {
+      Camera selectedCam = null;
+      foreach (Camera cam in Camera.allCameras)
+      {
+        if (cam != null && !cam.name.Equals("SelectMiniCamera")) selectedCam = cam;
+      }
       if (Input.GetMouseButtonDown(0))
       {
         if (EventSystem.current.IsPointerOverGameObject(fingerID)) return;
         RaycastHit hit;
-        if (Camera.main == null) return;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (selectedCam == null) return;
+        Ray ray = selectedCam.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
         {
           kindGetter = hit.transform.gameObject.GetComponent<KindGetter>();
@@ -92,15 +98,14 @@ public class Main : MonoBehaviour
         mouseDown = Input.mousePosition;
 
         if (attachedNode == null) return;
-        track *= Camera.main.transform.right.x >= 0 ? 1 : -1;
-        track.y = Camera.main.transform.right.x >= 0 ? track.y : track.y * -1;
-        if (-0.4f < Camera.main.transform.right.x && Camera.main.transform.right.x < 0.4)
+        track *= selectedCam.transform.right.x >= 0 ? 1 : -1;
+        track.y = selectedCam.transform.right.x >= 0 ? track.y : track.y * -1;
+        if (-0.4f < selectedCam.transform.right.x && selectedCam.transform.right.x < 0.4)
         {
-          track.z = Camera.main.transform.right.z < 0 ? track.x * -1 : track.x;
-          track.z *= Camera.main.transform.right.x > 0 ? 1 : -1;
+          track.z = selectedCam.transform.right.z < 0 ? track.x * -1 : track.x;
+          track.z *= selectedCam.transform.right.x > 0 ? 1 : -1;
           track.x = 0;
         }
-        Debug.Log(Camera.main.transform.right);
         attachedNode.transform.Translate(track * Time.deltaTime, Space.World);
         //I want to move based on camera position
       }

@@ -92,7 +92,10 @@ public class Main : MonoBehaviour
                 mouseDown = Input.mousePosition;
 
                 if (attachedNode == null) return;
-                attachedNode.transform.Translate(track * Time.deltaTime, Space.World);
+                if (Camera.main == null) return;
+
+                Vector3 dTrack = Quaternion.Inverse(Camera.main.transform.rotation) * track;
+                attachedNode.transform.Translate(dTrack * Time.deltaTime);
                 //I want to move based on camera position
             }
             if (Input.GetMouseButtonUp(0))

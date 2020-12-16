@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Main : MonoBehaviour
 {
@@ -31,10 +33,12 @@ public class Main : MonoBehaviour
   }
 
   private Vector3 prevPos;
+    private int fingerID = -1;
   void MouseControl()
   {
-    if (!Input.GetMouseButton(0)) return;
-    RaycastHit hit;
+    if (!Input.GetMouseButton(0) && !Input.GetMouseButton(1)) return;
+        if (EventSystem.current.IsPointerOverGameObject(fingerID)) return;
+        RaycastHit hit;
     if (Camera.main == null) return;
     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
     if (Physics.Raycast(ray, out hit))
@@ -43,16 +47,17 @@ public class Main : MonoBehaviour
       if (kindGetter == null) return;
       SceneNode attachedSceneNode = kindGetter.nodeType;
       if (attachedSceneNode == null) return;
-      Vector3 offset = attachedSceneNode.transform.position - hit.point;
-      Debug.Log(hit.point);
+      Vector3 offset = hit.point - attachedSceneNode.transform.position;
+      Debug.Log(offset);
       Vector3 direction =
       (Input.mousePosition.x - prevPos.x > 0 ?
         Camera.main.transform.right : -Camera.main.transform.right) +
         (Input.mousePosition.y - prevPos.y > 0 ?
         Camera.main.transform.up : -Camera.main.transform.up);
       direction.Normalize();
-      attachedSceneNode.transform.Translate(direction * 2.5f * Time.deltaTime);
-      prevPos = Input.mousePosition;
+            if(Input.GetMouseButton(0)) attachedSceneNode.transform.Translate(offset * 5f * Time.deltaTime);
+            if(Input.GetMouseButton(1)) attachedSceneNode.transform.Translate(-offset * 5f * Time.deltaTime);
+            prevPos = Input.mousePosition;
     }
   }
 }

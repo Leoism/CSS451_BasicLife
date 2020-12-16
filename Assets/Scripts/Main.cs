@@ -94,7 +94,7 @@ public class Main : MonoBehaviour
         if (attachedNode == null) return;
         track *= Camera.main.transform.right.x >= 0 ? 1 : -1;
         track.y = Camera.main.transform.right.x >= 0 ? track.y : track.y * -1;
-        if (-0.2f < Camera.main.transform.right.x && Camera.main.transform.right.x < 0.4)
+        if (-0.4f < Camera.main.transform.right.x && Camera.main.transform.right.x < 0.4)
         {
           track.z = Camera.main.transform.right.z < 0 ? track.x * -1 : track.x;
           track.z *= Camera.main.transform.right.x > 0 ? 1 : -1;
